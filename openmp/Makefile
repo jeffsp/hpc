@@ -10,14 +10,16 @@
 CXX=icpc
 OPTS=-O3 -std=c++0x
 OMP_OPTS=-openmp
+SZ=10000000
+N=64
 
 all:
 	$(CXX) $(OPTS) -o f f.cc
 	$(CXX) $(OPTS) $(OMP_OPTS) -o pf f.cc
 
 run:
-	./f 256 10000000
-	./pf 256 10000000
+	./f $(N) $(SZ)
+	./pf $(N) $(SZ)
 
 clean:
 	rm -f f pf

@@ -80,9 +80,9 @@ int main (int argc, char **argv)
         high_resolution_clock::time_point t2 = high_resolution_clock::now ();
 
         // print the combined distribution
-        for (size_t i = 0; i < c.size (); ++i)
-            clog << ' ' << int (c[i]);
-        clog << endl;
+        //for (size_t i = 0; i < c.size (); ++i)
+        //    clog << ' ' << int (c[i]);
+        //clog << endl;
 
         // check answer
         const size_t n = accumulate (c.begin (), c.end (), 0ul);
