@@ -11,8 +11,10 @@ CXX=mpicxx
 OPTS=-xhost -O2
 CMD=sbatch job.sh
 
-all:
-	$(CXX) $(OPTS) -o f f.cc
+all: f
+
+%:: %.cc Makefile
+	$(CXX) $(OPTS) -o "$@" "$<"
 
 run:
 	$(CMD)

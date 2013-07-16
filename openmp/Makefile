@@ -13,8 +13,12 @@ OMP_OPTS=-openmp
 SZ=10000000
 N=64
 
-all:
-	$(CXX) $(OPTS) -o f f.cc
+all: f pf
+
+%:: %.cc Makefile
+	$(CXX) $(OPTS) -o "$@" "$<"
+
+pf: f.cc Makefile
 	$(CXX) $(OPTS) $(OMP_OPTS) -o pf f.cc
 
 run:
