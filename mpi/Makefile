@@ -16,7 +16,7 @@ all: f
 %:: %.cc Makefile
 	$(CXX) $(OPTS) -o "$@" "$<"
 
-run:
+run: all
 	$(CMD)
 
 clean:

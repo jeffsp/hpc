@@ -35,30 +35,35 @@ int main (int argc, char **argv)
         clog << "size " << SZ << endl;
         clog << "values " << K << endl;
 
-        // create N buffers of size SZ
-        vector<buf_t> a (N, buf_t (SZ));
-
         // create a uniformly distributed random number generator
         std::mt19937 eng;
         std::uniform_int<unsigned> d (0, K-1);
 
+        // create a buffer of random data
+        buf_t r (SZ);
+        for (size_t i = 0; i < r.size (); ++i)
+            r[i] = d (eng);
+
+        // start a timer
         high_resolution_clock::time_point t1 = high_resolution_clock::now ();
 
-        // fill the buffers with random data
+        // create N buffers of size SZ
+        vector<buf_t> a (N, buf_t (SZ));
+
+        // fill the buffers with data
 #ifdef _OPENMP
 #pragma omp parallel for
 #endif
         for (size_t i = 0; i < a.size (); ++i)
         {
-            int r = d (eng);
+#ifdef _OPENMP
+#pragma omp critical
+#endif
+            clog << ' ' << i;
             for (size_t j = 0; j < a[i].size (); ++j)
-            {
-                // d(eng) is a critical section, so don't call it often
-                if (!(j%1000))
-                    r = d (eng);
-                a[i][j] = r;
-            }
+                a[i][j] = r[j] ^ i;
         }
+        clog << endl;
 
         // create N distribution tables
         vector<dist_t> b (a.size (), dist_t (K));
@@ -68,8 +73,15 @@ int main (int argc, char **argv)
 #pragma omp parallel for
 #endif
         for (size_t i = 0; i < a.size (); ++i)
+        {
+#ifdef _OPENMP
+#pragma omp critical
+#endif
+            clog << ' ' << i;
             for (size_t j = 0; j < a[i].size (); ++j)
                 ++b[i][a[i][j]];
+        }
+        clog << endl;
 
         // combine N distributions into one
         dist_t c (K);
