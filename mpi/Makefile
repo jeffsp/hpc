@@ -2,7 +2,7 @@
 # @brief mpi example
 # @author Jeff Perry <jeffsp@gmail.com>
 # @version 1.0
-# @date 2011-08-09
+# @date 2013-07-16
 
 .SUFFIXES:
 .PHONY: all run clean

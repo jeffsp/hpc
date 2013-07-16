@@ -2,7 +2,7 @@
 /// @brief openmp parallelization test
 /// @author Jeff Perry <jeffsp@gmail.com>
 /// @version 1.0
-/// @date 2013-07-15
+/// @date 2013-07-16
 
 #include <chrono>
 #include <iostream>
