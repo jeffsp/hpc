@@ -52,7 +52,7 @@ int main (int argc, char **argv)
 
         // fill the buffers with data
 #ifdef _OPENMP
-#pragma omp parallel for
+#pragma omp parallel for schedule (dynamic)
 #endif
         for (size_t i = 0; i < a.size (); ++i)
         {
@@ -70,7 +70,7 @@ int main (int argc, char **argv)
 
         // compute the distribution for each buffer
 #ifdef _OPENMP
-#pragma omp parallel for
+#pragma omp parallel for schedule (dynamic)
 #endif
         for (size_t i = 0; i < a.size (); ++i)
         {

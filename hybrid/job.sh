@@ -19,12 +19,12 @@
 
 export OMP_NUM_THREADS=16  						# number of threads per task
 
-# These are the maximum parameters for the development queue
+# These are the maximum parameters for the development queue (16*16=256 cores total)
 ##SBATCH -n 16                                   # number of tasks
 ##SBATCH -N 16                                   # number of nodes, n/N=tasks per node
 ##SBATCH -p development                          # queue
 
-# These are the maximum parameters for the normal queue
+# These are the maximum parameters for the normal queue (256*256=65536 cores total)
 #SBATCH -n 256                                  # number of tasks
 #SBATCH -N 256                                  # number of nodes, n/N=tasks per node
 #SBATCH -p normal                               # queue

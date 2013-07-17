@@ -16,15 +16,15 @@ size_t pcf (size_t x)
 {
     size_t total = 0;
 #ifdef _OPENMP
-#pragma omp parallel for
+#pragma omp parallel for schedule (dynamic)
 #endif
     for (size_t i = 2; i <= x; ++i)
     {
-        const size_t n = isprime (i);
+        const bool p = isprime (i);
 #ifdef _OPENMP
 #pragma omp atomic
 #endif
-        total += n;
+        total += p;
     }
     return total;
 }
