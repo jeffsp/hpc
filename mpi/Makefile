@@ -8,7 +8,7 @@
 .PHONY: all run clean
 
 CXX=mpicxx
-OPTS=-xhost -O2
+OPTS=-xhost -O2 -std=c++0x
 CMD=sbatch job.sh
 
 all: f
