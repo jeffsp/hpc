@@ -40,7 +40,6 @@
 
 CXX=mpicxx
 OPTS=-xhost -O2
-CMD=sbatch job.sh
 
 CCFILES=$(shell ls -1 *.cc)
 TARGETS=$(basename $(CCFILES))
@@ -57,9 +56,7 @@ check: all
 	$(CXX) $(OPTS) -o "$@" "$<"
 
 run: $(TARGETS)
-	./pcf1 1000000
-	./pcf2 1000000
-	$(CMD)
+	sbatch job.sh
 
 clean:
 	rm -f $(TARGETS)
