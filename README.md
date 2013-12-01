@@ -1,7 +1,7 @@
 hpc
 ===
 
-High performance computing examples developed for the Texas Advanced Computing Center at the University of Texas
+High performance C++ computing examples developed for resources available from the Texas Advanced Computing Center at the University of Texas
 
 These examples were developed for the Stampede system.
 
