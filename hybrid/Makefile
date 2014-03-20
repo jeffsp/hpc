@@ -39,7 +39,7 @@
 .PHONY: all check run clean
 
 CXX=mpicxx
-OPTS=-xhost -O2
+OPTS=-xhost -O2 -openmp
 
 CCFILES=$(shell ls -1 *.cc)
 TARGETS=$(basename $(CCFILES))
