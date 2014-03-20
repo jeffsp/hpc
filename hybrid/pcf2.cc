@@ -15,15 +15,11 @@ const char *usage = "compute number of primes less than or equal to N\nusage: pc
 size_t pcf (size_t x)
 {
     size_t total = 0;
-#ifdef _OPENMP
 #pragma omp parallel for schedule (dynamic)
-#endif
     for (size_t i = 2; i <= x; ++i)
     {
         const bool p = isprime (i);
-#ifdef _OPENMP
 #pragma omp atomic
-#endif
         total += p;
     }
     return total;
