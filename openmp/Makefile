@@ -8,8 +8,8 @@
 .PHONY: all run clean
 
 CXX=icpc
-OPTS=-O2 -std=c++0x
-OMP_OPTS=-openmp
+OPTS=-O2 -std=c++11
+OMP_OPTS=-qopenmp
 SZ=10000000
 N=256
 
