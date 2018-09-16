@@ -37,7 +37,7 @@ int main (int argc, char **argv)
 
         // create a uniformly distributed random number generator
         std::mt19937 eng;
-        std::uniform_int<unsigned> d (0, K-1);
+        std::uniform_int_distribution<unsigned> d (0, K-1);
 
         // create a buffer of random data
         buf_t r (SZ);
